@@ -1,1 +1,27 @@
 @import './reset';
+@import './variabels';
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100,200,300;400;500;700;900&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+}
+
+.col-3,
+.col-2,
+.col-7 {
+  padding: 0 !important;
+}
+
+body {
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: $primaryColorLight !important;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: $primaryColor !important;
+}

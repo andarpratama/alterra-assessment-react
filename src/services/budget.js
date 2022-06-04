@@ -1,7 +1,11 @@
-const Budget = {
+export const Budget = {
   sum: (a, b) => {
     return a + b;
   },
 };
 
-export default Budget;
+export const addBudget = () => {
+  // let raw = fs.readFileSync('../data/budgets.json');
+  // let itemList = JSON.parse(raw);
+  // console.log(itemList);
+};

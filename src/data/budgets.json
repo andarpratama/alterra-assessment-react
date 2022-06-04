@@ -1,13 +1,49 @@
 [
   {
     "id": 1,
-    "start_date": "06/01/2022",
+    "start_date": "2014-04-03", 
     "end_date": "06/30/2022",
     "initial_balance": 1000000
   },
   {
     "id": 2,
-    "start_date": "06/01/2022",
+    "start_date": "2014-04-03",
+    "end_date": "06/20/2022",
+    "initial_balance": 2000000
+  },
+  {
+    "id": 2,
+    "start_date": "2014-04-03",
+    "end_date": "06/20/2022",
+    "initial_balance": 2000000
+  },
+  {
+    "id": 2,
+    "start_date": "2014-04-03",
+    "end_date": "06/20/2022",
+    "initial_balance": 2000000
+  },
+  {
+    "id": 2,
+    "start_date": "2014-04-03",
+    "end_date": "06/20/2022",
+    "initial_balance": 2000000
+  },
+  {
+    "id": 2,
+    "start_date": "2014-04-03",
+    "end_date": "06/20/2022",
+    "initial_balance": 2000000
+  },
+  {
+    "id": 2,
+    "start_date": "2014-04-03",
+    "end_date": "06/20/2022",
+    "initial_balance": 2000000
+  },
+  {
+    "id": 2,
+    "start_date": "2014-04-03",
     "end_date": "06/20/2022",
     "initial_balance": 2000000
   }

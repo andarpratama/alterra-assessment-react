@@ -1,0 +1,31 @@
+.budget {
+  &__title {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  &__table {
+    background: #fff;
+    padding: 28px 24px;
+    border-radius: 6px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.044),
+      0 6px 12px 0 rgba(0, 0, 0, 0.074);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    button {
+      display: flex;
+      align-items: center;
+      padding-right: 22px !important;
+    }
+
+    svg {
+      fill: #fff;
+      margin-right: 4px;
+    }
+  }
+}

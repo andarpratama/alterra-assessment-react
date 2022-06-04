@@ -1,19 +1,16 @@
 import React from 'react';
 import '../assets/sass/home.scss';
-import Main from '../components/Main';
-import SideLeft from '../layouts/SideLeft';
-import SideRight from '../layouts/SideRight';
+import MainHome from '../components/home/MainHome';
 
 class Home extends React.Component {
+  componentDidMount() {
+    document.title = 'Budget Planer App';
+  }
   render() {
     return (
-      <main className='home'>
-        <div className='row'>
-          <SideLeft />
-          <Main />
-          <SideRight />
-        </div>
-      </main>
+      // <>
+      <MainHome />
+      // </>
     );
   }
 }

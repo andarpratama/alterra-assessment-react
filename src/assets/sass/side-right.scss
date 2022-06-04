@@ -1,6 +1,35 @@
 @import './variabels';
 
 .side-right {
-  background: $secondaryColor;
-  padding: 32px 20px;
+  background: $secondaryColorLight;
+  padding: 32px 28px 32px 20px !important;
+
+  .profile {
+    background: #f5d5c0;
+    padding: 22px !important;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 28px;
+
+    img {
+      width: 110px;
+      border-radius: 50%;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+
+    span {
+      font-size: 12px;
+      font-weight: 300;
+    }
+  }
+
+  .history {
+    h2 {
+      font-size: 24px;
+    }
+  }
 }
