@@ -10,9 +10,11 @@ class MainBudget extends React.Component {
   constructor() {
     super();
     this.state = {
-      BudgetData: BudgetData,
-      showModal: false,
+      BudgetData: [],
+      showModal: true,
     };
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleShowModal = this.handleShowModal.bind(this);
   }
 
   handleShowModal = () => {
@@ -56,19 +58,14 @@ class MainBudget extends React.Component {
             </button>
             <Modal show={this.state.showModal} onHide={this.handleCloseModal}>
               <Modal.Header closeButton>
-                <Modal.Title>Add new Budget</Modal.Title>
+                <Modal.Title>Modal heading</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 Woohoo, you're reading this text in a modal!
               </Modal.Body>
               <Modal.Footer>
                 <Button variant='secondary'>Close</Button>
-                <button
-                  className='btn btn-primary'
-                  onClick={this.handleCloseModal}
-                >
-                  Save Changes
-                </button>
+                <Button variant='primary'>Save Changes</Button>
               </Modal.Footer>
             </Modal>
           </div>
