@@ -22,11 +22,18 @@
       color: #fff;
       font-size: 32px;
       margin-bottom: 14px;
+
+      @include breakpoint('md') {
+        font-size: 24px;
+      }
     }
 
     span:last-child {
       color: #ddd;
       font-size: 22px;
+      @include breakpoint('md') {
+        font-size: 14px;
+      }
     }
   }
 }
