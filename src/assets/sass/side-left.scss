@@ -1,9 +1,15 @@
 @import './variabels';
+@import './responsive';
 
 .side-left {
   background: $primaryColor;
-  padding: 32px 50px 32px 40px;
-
+  padding: 32px 50px 32px 40px !important;
+  @include breakpoint('md') {
+    min-height: 100vh;
+  }
+  @include breakpoint('lg') {
+    min-height: 100vh;
+  }
   .current-balance {
     background: #ffffff11;
     padding: 24px 12px;

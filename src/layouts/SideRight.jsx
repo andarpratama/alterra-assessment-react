@@ -4,7 +4,7 @@ import '../assets/sass/side-right.scss';
 class SideRight extends React.Component {
   render() {
     return (
-      <section className='col-2 side-right'>
+      <section className='col-12 col-lg-2 side-right'>
         <h2>SideRight</h2>
       </section>
     );
