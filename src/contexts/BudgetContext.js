@@ -18,9 +18,13 @@ export const BudgetsProvider = ({ children }) => {
     return expenses.filter(exp => exp.budgetId === budgetId);
   }
 
-  function addExpense({ desc, amount, budgetId }) {
+  function geteExpenseByTag(tag) {
+    return expenses.filter(exp => exp.tag === tag);
+  }
+
+  function addExpense({ desc, amount, budgetId, tag }) {
     setExpenses(oldExpense => {
-      return [...oldExpense, { id: uuidV4(), desc, amount, budgetId }];
+      return [...oldExpense, { id: uuidV4(), desc, amount, budgetId, tag }];
     });
   }
 
@@ -60,6 +64,7 @@ export const BudgetsProvider = ({ children }) => {
         addBudget,
         deleteBudget,
         deleteExpense,
+        geteExpenseByTag,
       }}
     >
       {children}

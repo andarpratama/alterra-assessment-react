@@ -6,6 +6,7 @@ export default function ExpenseModal({ show, handleClose, defaultBudgetId }) {
   const descriptionRef = useRef();
   const amountRef = useRef();
   const budgetIdRef = useRef();
+  const tagRef = useRef();
   const { addExpense, budgets } = useBudgets();
   function handleSubmit(e) {
     e.preventDefault();
@@ -13,6 +14,7 @@ export default function ExpenseModal({ show, handleClose, defaultBudgetId }) {
       desc: descriptionRef.current.value,
       amount: parseInt(amountRef.current.value),
       budgetId: budgetIdRef.current.value,
+      tag: tagRef.current.value,
     });
     handleClose();
   }
@@ -32,6 +34,10 @@ export default function ExpenseModal({ show, handleClose, defaultBudgetId }) {
               type='text'
               required
             />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='description'>
+            <Form.Label>Tag</Form.Label>
+            <Form.Control className='py-3' ref={tagRef} type='text' required />
           </Form.Group>
           <Form.Group className='mb-3' controlId='max'>
             <Form.Label>Amount</Form.Label>

@@ -1,13 +1,29 @@
 import React from 'react';
-import { Modal } from 'react-bootstrap';
+import { Form, Modal } from 'react-bootstrap';
 import { UNCATEGORIZED_BUDGET_ID, useBudgets } from '../contexts/BudgetContext';
 import { toRupiah } from '../services/toRupiah';
 
 export default function ViewExpenseModal({ budgetId, handleClose }) {
-  const { getBudgetExpenses, budgets, deleteBudget, deleteExpense } =
-    useBudgets();
+  const {
+    getBudgetExpenses,
+    budgets,
+    deleteBudget,
+    deleteExpense,
+    // geteExpenseByTag,
+  } = useBudgets();
 
   const expenses = getBudgetExpenses(budgetId);
+
+  function getUniqueListBy(arr, key) {
+    return [...new Map(arr.map(item => [item[key], item])).values()];
+  }
+
+  const handleSearchByTag = e => {
+    // setExpense(geteExpenseByTag(e.target.value));
+    console.log(e.target.value);
+  };
+
+  // const expenses = getBudgetExpenses(budgetId);
 
   const budget =
     UNCATEGORIZED_BUDGET_ID === budgetId
@@ -46,11 +62,32 @@ export default function ViewExpenseModal({ budgetId, handleClose }) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className='modal-view-expense-body'>
+        <Form.Group className='mb-3' controlId='budgetId'>
+          <Form.Select
+            defaultValue='all'
+            onChange={handleSearchByTag}
+            className='py-3'
+          >
+            <option value='all'>All</option>
+            {getUniqueListBy(expenses).map(expense => {
+              return (
+                <option key={expense.id} value={expense.tag}>
+                  {expense.tag}
+                </option>
+              );
+            })}
+          </Form.Select>
+        </Form.Group>
         {expenses.map(expense => {
           return (
             <React.Fragment key={expense.id}>
               <div className='d-flex align-items-center justify-content-between mb-3 border-bottom py-2'>
-                <span>{expense.desc}</span>
+                <div>
+                  <span style={{ fontSize: '20px' }}>{expense.desc} - </span>
+                  <span className='text-secondary' style={{ fontSize: '14px' }}>
+                    {expense.tag}
+                  </span>
+                </div>
                 <div className='d-flex align-items-center'>
                   <span className='me-3'>{toRupiah(expense.amount)}</span>
                   <button
