@@ -1,7 +1,10 @@
 import React, { useContext } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import useLocalStorage from '../services/useLocalStorage';
+
 const BudgetContext = React.createContext();
+
+export const UNCATEGORIZED_BUDGET_ID = 'Uncategorized';
 
 export const useBudgets = () => {
   return useContext(BudgetContext);
@@ -30,6 +33,13 @@ export const BudgetsProvider = ({ children }) => {
     });
   }
   function deleteBudget({ id }) {
+    setExpenses(oldExpense => {
+      // eslint-disable-next-line array-callback-return
+      return oldExpense.map(expense => {
+        if (expense.budgetId !== id) return expense;
+        return { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID };
+      });
+    });
     setBudgets(oldBudgets => {
       return oldBudgets.filter(budget => budget.id !== id);
     });

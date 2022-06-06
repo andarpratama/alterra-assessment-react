@@ -1,4 +1,40 @@
 @import './variabels';
+@import './responsive';
+
+.btn {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+
+  @include breakpoint(md) {
+    padding-top: 0.8rem !important;
+    padding-bottom: 0.8rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  @include breakpoint(lg) {
+    padding-top: 1.2rem !important;
+    padding-bottom: 1.2rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+.btn-danger {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  padding-left: 0.7rem !important;
+  padding-right: 0.7rem !important;
+}
+
+.btn-outline-danger {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  padding-left: 0.7rem !important;
+  padding-right: 0.7rem !important;
+}
 
 .btn-primary {
   background: $primaryColor !important;
@@ -14,8 +50,13 @@
   border: none;
 }
 .btn-secondary:hover {
-  border-color: $secondaryColor !important;
-  background: $secondaryColor !important;
+  border-color: $primaryColor !important;
+  background: $primaryColor !important;
+}
+
+.btn-secondary:active {
+  border-color: $primaryColor !important;
+  background: $primaryColor !important;
 }
 
 .btn-outline-primary:hover {
