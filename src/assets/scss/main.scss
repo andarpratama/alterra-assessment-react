@@ -1,0 +1,52 @@
+@import './reset';
+@import './reset-ui';
+@import './responsive';
+@import './variabels';
+
+body {
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+}
+
+.main-app {
+  padding-top: 0;
+
+  @include breakpoint(md) {
+    padding-top: 10px;
+  }
+
+  @include breakpoint(lg) {
+    padding-top: 40px;
+  }
+}
+
+.logo {
+  width: 56px;
+
+  @include breakpoint(md) {
+    width: 66px;
+  }
+}
+
+.view-expense-title {
+  font-size: 16px;
+}
+
+.text-logo {
+  // display: block !important;
+  display: none !important;
+  color: $primaryColor;
+
+  @include breakpoint(md) {
+    display: block !important;
+  }
+}
+
+// .modal-view-expense-body {
+//   height: 400px !important;
+//   overflow-y: scroll;
+
+//   & & {
+//     padding: 30px;
+//   }
+// }
