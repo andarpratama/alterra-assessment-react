@@ -1,6 +1,7 @@
 import { Form, Modal, Button } from 'react-bootstrap';
 import { useRef } from 'react';
 import { useBudgets } from '../contexts/BudgetContext';
+import Validation from '../services/Validation';
 
 export default function BudgetModal({ show, handleClose }) {
   const nameRef = useRef();
@@ -8,6 +9,25 @@ export default function BudgetModal({ show, handleClose }) {
   const { addBudget } = useBudgets();
   function handleSubmit(e) {
     e.preventDefault();
+    if (!nameRef.current.value) {
+      return Validation.required('Name');
+    }
+
+    if (!maxRef.current.value) {
+      return Validation.required('Maximum Spending');
+    }
+
+    if (typeof parseInt(maxRef.current.value) !== 'number') {
+      return Validation.isNumber('Amount');
+    }
+
+    if (
+      parseInt(maxRef.current.value) === 0 ||
+      parseInt(maxRef.current.value) < 0
+    ) {
+      return Validation.isZero('Amount');
+    }
+
     addBudget({
       name: nameRef.current.value,
       max: parseFloat(maxRef.current.value),

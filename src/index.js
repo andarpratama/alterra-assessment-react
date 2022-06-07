@@ -4,7 +4,9 @@ import './assets/scss/main.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import 'alertifyjs/build/alertify.min.js';
+import 'alertifyjs/build/css/alertify.min.css';
+import 'alertifyjs/build/css/themes/bootstrap.min.css';
 import { BudgetsProvider } from './contexts/BudgetContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

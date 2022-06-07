@@ -1,6 +1,18 @@
 @import './variabels';
 @import './responsive';
 
+.ajs-button.ajs-ok {
+  background: $primaryColor !important;
+  border: 0 !important;
+  color: #fff;
+}
+
+.ajs-button.ajs-ok:hover {
+  background: $secondaryColor !important;
+  border: 0 !important;
+  color: #fff;
+}
+
 .btn {
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
