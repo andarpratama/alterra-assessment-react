@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import useLocalStorage from '../services/useLocalStorage';
+import alertify from 'alertifyjs';
 
 const BudgetContext = React.createContext();
 
@@ -12,17 +13,29 @@ export const useBudgets = () => {
 
 export const BudgetsProvider = ({ children }) => {
   const [budgets, setBudgets] = useLocalStorage('budgets', []);
-  const [expenses, setExpenses] = useLocalStorage('expense', []);
+  const [expenses, setExpenses] = useLocalStorage('expenses', []);
+  const [expensesByTag, setExpensesByTag] = useState(expenses);
 
   function getBudgetExpenses(budgetId) {
     return expenses.filter(exp => exp.budgetId === budgetId);
   }
 
-  function geteExpenseByTag(tag) {
-    return expenses.filter(exp => exp.tag === tag);
+  function getExpenseByTag(budgetId, tag) {
+    if (tag === 'all') {
+      setExpensesByTag(expenses);
+    } else {
+      setBudgets(
+        expenses.filter(
+          expense => expense.tag === tag && expense.budgetId === budgetId
+        )
+      );
+    }
   }
 
   function addExpense({ desc, amount, budgetId, tag }) {
+    if (!desc) {
+      return alertify.alert('Validation Error', 'Please complete all input!');
+    }
     setExpenses(oldExpense => {
       return [...oldExpense, { id: uuidV4(), desc, amount, budgetId, tag }];
     });
@@ -64,7 +77,8 @@ export const BudgetsProvider = ({ children }) => {
         addBudget,
         deleteBudget,
         deleteExpense,
-        geteExpenseByTag,
+        getExpenseByTag,
+        expensesByTag,
       }}
     >
       {children}

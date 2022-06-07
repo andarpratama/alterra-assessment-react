@@ -1,6 +1,7 @@
 import { Form, Modal, Button } from 'react-bootstrap';
 import { useRef } from 'react';
 import { UNCATEGORIZED_BUDGET_ID, useBudgets } from '../contexts/BudgetContext';
+import Validation from '../services/Validation';
 
 export default function ExpenseModal({ show, handleClose, defaultBudgetId }) {
   const descriptionRef = useRef();
@@ -10,6 +11,32 @@ export default function ExpenseModal({ show, handleClose, defaultBudgetId }) {
   const { addExpense, budgets } = useBudgets();
   function handleSubmit(e) {
     e.preventDefault();
+    if (!descriptionRef.current.value) {
+      return Validation.required('Name');
+    }
+    if (!tagRef.current.value) {
+      return Validation.required('Tag');
+    }
+
+    if (!amountRef.current.value) {
+      return Validation.required('Amount');
+    }
+
+    if (typeof parseInt(amountRef.current.value) !== 'number') {
+      return Validation.isNumber('Amount');
+    }
+
+    if (
+      parseInt(amountRef.current.value) === 0 ||
+      parseInt(amountRef.current.value) < 0
+    ) {
+      return Validation.isZero('Amount');
+    }
+
+    if (!budgetIdRef.current.value) {
+      return Validation.required('Budget');
+    }
+
     addExpense({
       desc: descriptionRef.current.value,
       amount: parseInt(amountRef.current.value),
@@ -28,16 +55,11 @@ export default function ExpenseModal({ show, handleClose, defaultBudgetId }) {
         <Modal.Body>
           <Form.Group className='mb-3' controlId='description'>
             <Form.Label>Name</Form.Label>
-            <Form.Control
-              className='py-3'
-              ref={descriptionRef}
-              type='text'
-              required
-            />
+            <Form.Control className='py-3' ref={descriptionRef} type='text' />
           </Form.Group>
           <Form.Group className='mb-3' controlId='description'>
             <Form.Label>Tag</Form.Label>
-            <Form.Control className='py-3' ref={tagRef} type='text' required />
+            <Form.Control className='py-3' ref={tagRef} type='text' />
           </Form.Group>
           <Form.Group className='mb-3' controlId='max'>
             <Form.Label>Amount</Form.Label>
@@ -45,7 +67,6 @@ export default function ExpenseModal({ show, handleClose, defaultBudgetId }) {
               className='py-3'
               ref={amountRef}
               type='number'
-              required
               min={0}
               step={0.01}
             />
