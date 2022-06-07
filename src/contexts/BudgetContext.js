@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import useLocalStorage from '../services/useLocalStorage';
-import alertify from 'alertifyjs';
 
 const BudgetContext = React.createContext();
 
@@ -33,9 +32,6 @@ export const BudgetsProvider = ({ children }) => {
   }
 
   function addExpense({ desc, amount, budgetId, tag }) {
-    if (!desc) {
-      return alertify.alert('Validation Error', 'Please complete all input!');
-    }
     setExpenses(oldExpense => {
       return [...oldExpense, { id: uuidV4(), desc, amount, budgetId, tag }];
     });
